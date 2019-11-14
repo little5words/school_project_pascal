@@ -8,3 +8,5 @@ print(1+"\n")
 
 local a = "2"
 print(a.tointeger() + 2)
+print(a.tofloat() + 2)
+print(a.len() + 2)
