@@ -1,12 +1,11 @@
 foreach(idx,val in vargv)
-    print("index="+idx+" value="+val+"\n");
-try
-    print(vargv[0])
-catch( vargv )
-
-print(1+"\n")
-
-local a = "2"
+    print("index="+idx+" value="+val+"\n")
+foreach(idx,val in vargv)
+    print(val.tointeger()+10+"\n")
+local a = "2";
 print(a.tointeger() + 2)
+print("\n")
 print(a.tofloat() + 2)
+print("\n")
 print(a.len() + 2)
+print("\n")

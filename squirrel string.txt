@@ -1,0 +1,27 @@
+String
+
+len()
+
+returns the string length
+
+tointeger()
+
+converts the string to integer and returns it
+
+tofloat()
+
+converts the string to float and returns it
+
+tostring()
+
+returns the string(dummy function)
+
+slice(start,[end])
+
+returns a section of the string as new string. Copies from start to the end (not included). If start is negative the index is calculated as length + start, if end is negative the index is calculated as length + end. If end is omitted end is equal to the string length. 
+
+
+_________________________
+base is "super"
+single inheritance
+constructor = init
