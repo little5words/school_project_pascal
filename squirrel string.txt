@@ -25,3 +25,4 @@ _________________________
 base is "super"
 single inheritance
 constructor = init
+Tail recursion
