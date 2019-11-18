@@ -1,7 +1,9 @@
+::array1 <- []
 foreach(idx,val in vargv)
-    print("index="+idx+" value="+val+"\n")
-foreach(idx,val in vargv)
-    print(val.tointeger()+10+"\n")
+    array1.append(val.tointeger());
+print(array1);
+foreach(idx,val in array1)
+    print(idx +" "+ val)
 local a = "2";
 print(a.tointeger() + 2)
 print("\n")
