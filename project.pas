@@ -1,25 +1,67 @@
-program project;
+{$mode objfpc} // directive to be used for defining classes
+{$m+}		   // directive to be used for using constructor
+
+program exClass;
+type
+   userinput = string;
+   Sign = class
+   
+   private
+      length, width: integer;
+
+   public
+      constructor create(l, w: integer);
+      procedure setlength(l: integer);
+
+      function getlength(): integer;
+      procedure setwidth(w: integer);
+
+      function getwidth(): integer;
+      procedure draw;
+end;
 var
-   { local variable definition }
-   a : integer;
+   r1: Sign;
+   month : userinput;
+
+constructor Sign.create(l, w: integer);
+begin
+   length := l;
+   width := w;
+end;
+
+procedure Sign.setlength(l: integer);
+begin
+   length := l;
+end;
+
+procedure Sign.setwidth(w: integer);
+begin
+   width :=w;
+end;
+
+function Sign.getlength(): integer;
+begin
+   getlength := length;
+end;
+
+function Sign.getwidth(): integer;
+begin
+   getwidth := width;
+end;
+
+procedure Sign.draw;
+var
+   i, j: integer;
+begin
+   for i:= 1 to length do
+   begin
+      for j:= 1 to width do
+         write(' * ');
+      writeln;
+   end;
+end;
 
 begin
-   a := 100;
-   (* check the boolean condition *)
-   if (a = 10)  then
-      (* if condition is true then print the following *)
-      writeln('Value of a is 10' )
-   
-   else if ( a = 20 ) then
-      (* if else if condition is true *)
-      writeln('Value of a is 20' )
-   
-   else if( a = 30 ) then 
-      (* if else if condition is true  *)
-      writeln('Value of a is 30' )
-   
-   else
-      (* if none of the conditions is true *)
-      writeln('None of the values is matching' );
-      writeln('Exact value of a is: ', a );
+   writeln('Please enter you month of birth: ');
+   readln(month);
 end.
