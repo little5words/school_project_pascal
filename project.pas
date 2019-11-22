@@ -22,6 +22,7 @@ end;
 var
    m1: Sign;
    month : userinput;
+   day : userinput;
 
 constructor Sign.create(l, w: integer);
 begin
@@ -70,4 +71,11 @@ begin
    writeln('Please enter you month of birth: ');
    readln(month);
 
+   writeln('Please enter you day of birth: ');
+   readln(day);
+
+   if month = 'hi' then
+   begin
+        writeln('hi');
+   end;
 end.
