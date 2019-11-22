@@ -5,7 +5,7 @@ program exClass;
 type
    userinput = string;
    Sign = class
-   
+
    private
       length, width: integer;
 
@@ -20,7 +20,7 @@ type
       procedure draw;
 end;
 var
-   r1: Sign;
+   m1: Sign;
    month : userinput;
 
 constructor Sign.create(l, w: integer);
@@ -62,6 +62,12 @@ begin
 end;
 
 begin
+   Randomize; { This way we generate a new sequence every time
+               the program is run}
+
+   m1:= Sign.create(3,7);
+   writeln(Random(11));
    writeln('Please enter you month of birth: ');
    readln(month);
+
 end.
