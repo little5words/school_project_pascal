@@ -73,9 +73,60 @@ begin
 
    writeln('Please enter you day of birth: ');
    readln(day);
-
-   if month = 'hi' then
+   if month = 'january' then
    begin
-        writeln('hi');
+        writeln('starting child');
+   end;
+
+   if month = 'february' then
+   begin
+        writeln('cold child');
+   end;
+   if month = 'march' then
+   begin
+        writeln('band child');
+   end;
+   if month = 'april' then
+   begin
+        writeln('rain child');
+   end;
+
+   if month = 'may' then
+   begin
+        writeln('mayday child');
+   end;
+
+   if month = 'june' then
+   begin
+        writeln('summer child');
+   end;
+   if month = 'july' then
+   begin
+        writeln('independent child');
+   end;
+
+   if month = 'august' then
+   begin
+        writeln('school child');
+   end;
+
+   if month = 'september' then
+   begin
+        writeln('septer child');
+   end;
+
+   if month = 'october' then
+   begin
+        writeln('halloween child');
+   end;
+
+   if month = 'november' then
+   begin
+        writeln('novice child');
+   end;
+
+   if month = 'december' then
+   begin
+        writeln('snow child');
    end;
 end.
