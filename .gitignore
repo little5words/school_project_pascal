@@ -3,3 +3,6 @@ fp.dir
 *.$$$
 *.cfg
 project.o
+*.bak
+*.out
+*.err
