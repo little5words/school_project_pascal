@@ -139,4 +139,7 @@ begin
    begin
         writeln('Capricorns are skilled at navigating both the material and emotional realms.');
    end;
+
+   writeln('Please press enter!: ');
+   readln(month);
 end.
