@@ -1,86 +1,58 @@
 {$mode objfpc} // directive to be used for defining classes
 {$m+}	       // directive to be used for using constructor
-program exClass;
-Uses sysutils;
+program Classproject;
+Uses
+   sysutils, classes;
 
 type
    userinput = string;
    Sign = class
 
    private
-      length, width: integer;
+     month : string;
+     day : integer;
 
    public
-      constructor create(l, w: integer);
-      procedure setlength(l: integer);
+      constructor create(m , d : string);
+      procedure printout;
+      function createstr(sign : string) : string ;
 
-      function getlength(): integer;
-      procedure setwidth(w: integer);
-
-      function getwidth(): integer;
-      procedure draw;
 end;
 var
    m1: Sign;
    month : userinput;
    day : userinput;
    dayint : integer;
+   list: TStringList;
 
-constructor Sign.create(l, w: integer);
+constructor Sign.create(m, d : string);
 begin
-   length := l;
-   width := w;
+  month := m;
+  Try
+     day := StrToInt(d);
+   except
+   On E : EConvertError do
+     Writeln('Invalid number encountered');
+     end;
+end;
+function Sign.createstr(sign : string): string;
+begin
+  list := TStringList.create;
+  try
+    list.LoadFromFile(sign +'.txt');
+
+    Randomize;
+    createstr :=  list[Random(list.Count)];
+  finally
+    list.Free;
+  end;
 end;
 
-procedure Sign.setlength(l: integer);
+procedure Sign.printout;
 begin
-   length := l;
-end;
-
-procedure Sign.setwidth(w: integer);
-begin
-   width :=w;
-end;
-
-function Sign.getlength(): integer;
-begin
-   getlength := length;
-end;
-
-function Sign.getwidth(): integer;
-begin
-   getwidth := width;
-end;
-
-procedure Sign.draw;
-var
-   i, j: integer;
-begin
-   for i:= 1 to length do
-   begin
-      for j:= 1 to width do
-         write(' * ');
-      writeln;
-   end;
-end;
-
-begin
-
-
-   Randomize; { This way we generate a new sequence every time
-               the program is run}
-
-   m1:= Sign.create(3,7);
-   writeln(Random(11));
-   writeln('Please enter you month of birth: ');
-   readln(month);
-
-   writeln('Please enter you day of birth: ');
-   readln(day);
-   dayint := StrToInt(day);
-
    if ((month = 'january') AND (dayint >= 20)) OR ((month = 'february') AND (dayint <= 18)) then
    begin
+        writeln(self.createstr('test'));
         writeln('Aquarius is the most humanitarian astrological sign.');
    end;
 
@@ -139,7 +111,19 @@ begin
    begin
         writeln('Capricorns are skilled at navigating both the material and emotional realms.');
    end;
+end;
 
-   writeln('Please press enter!: ');
+begin
+
+   writeln(Random(11));
+   writeln('Please enter you month of birth: ');
    readln(month);
+   writeln('Please enter you day of birth: ');
+   readln(day);
+
+   m1:= Sign.create(month, day);
+   m1.printout;
+
+   writeln('Please press enter!');
+   readln;
 end.
