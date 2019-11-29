@@ -142,7 +142,7 @@ begin
         //create sign instantance and print output
         m1:= Sign.create(month, day);
         m1.printout;
-   until month = 'quit';
+   until (month = 'quit') OR (day = 'quit');
 
    //end
    writeln('Please press enter!');
