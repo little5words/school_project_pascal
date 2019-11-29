@@ -22,7 +22,6 @@ var
    m1: Sign;
    month : userinput;
    day : userinput;
-   dayint : integer;
    list: TStringList;
 
 constructor Sign.create(m, d : string);
@@ -50,72 +49,82 @@ end;
 
 procedure Sign.printout;
 begin
-   if ((month = 'january') AND (dayint >= 20)) OR ((month = 'february') AND (dayint <= 18)) then
+   if ((month = 'january') AND (day >= 20)) OR ((month = 'february') AND (day <= 18)) then
    begin
         writeln(self.createstr('test'));
         writeln('Aquarius is the most humanitarian astrological sign.');
    end;
 
-   if ((month = 'february') AND (dayint >= 19)) OR ((month = 'march') AND (dayint <= 20)) then
+   if ((month = 'february') AND (day >= 19)) OR ((month = 'march') AND (day <= 20)) then
    begin
+        writeln(self.createstr('test'));
         writeln('Pisces has absorbed every lesson - the joys and the pain, the hopes and the fears.');
    end;
 
-   if ((month = 'march') AND (dayint >= 21)) OR ((month = 'april') AND (dayint <= 19)) then
+   if ((month = 'march') AND (day >= 21)) OR ((month = 'april') AND (day <= 19)) then
    begin
+        writeln(self.createstr('test'));
         writeln('Bold and ambitious, Aries dives headfirst into even the most challenging situations.');
    end;
 
-   if ((month = 'april') AND (dayint >= 20)) OR ((month = 'may') AND (dayint <= 20)) then
+   if ((month = 'april') AND (day >= 20)) OR ((month = 'may') AND (day <= 20)) then
    begin
+        writeln(self.createstr('test'));
         writeln('Like their celestial spirit animal, Taureans enjoy relaxing in serene,'+
         'bucolic environments surrounded by soft sounds, soothing aromas, and succulent flavors.');
    end;
 
-   if ((month = 'may') AND (dayint >= 21)) OR ((month = 'june') AND (dayint <= 20)) then
+   if ((month = 'may') AND (day >= 21)) OR ((month = 'june') AND (day <= 20)) then
    begin
+        writeln(self.createstr('test'));
         writeln('Appropriately symbolized by the celestial twins, this air sign was interested in so many pursuits that it had to double itself.');
    end;
 
-   if ((month = 'june') AND (dayint >= 21)) OR ((month = 'july') AND (dayint <= 22)) then
+   if ((month = 'june') AND (day >= 21)) OR ((month = 'july') AND (day <= 22)) then
    begin
-        writeln('Cancers are highly intuitive and their psychic abilities manifest in tangible spaces');
+        writeln(self.createstr('test'));
+   writeln('Cancers are highly intuitive and their psychic abilities manifest in tangible spaces');
    end;
 
-   if ((month = 'july') AND (dayint >= 23)) OR ((month = 'august') AND (dayint <= 22)) then
+   if ((month = 'july') AND (day >= 23)) OR ((month = 'august') AND (day <= 22)) then
    begin
+        writeln(self.createstr('test'));
         writeln('Vivacious, theatrical, and passionate, Leos love to bask in the spotlight and celebrate themselves.');
    end;
 
-   if ((month = 'august') AND (dayint >= 23)) OR ((month = 'september') AND (dayint <= 22)) then
+   if ((month = 'august') AND (day >= 23)) OR ((month = 'september') AND (day <= 22)) then
    begin
+        writeln(self.createstr('test'));
         writeln('Virgos are logical, practical, and systematic in their approach to life');
    end;
 
-   if ((month = 'september') AND (dayint >= 23)) OR ((month = 'october') AND (dayint <= 22)) then
+   if ((month = 'september') AND (day >= 23)) OR ((month = 'october') AND (day <= 22)) then
    begin
+        writeln(self.createstr('test'));
         writeln(' Libra is obsessed with symmetry and strives to create equilibrium in all areas of life.');
    end;
 
-   if ((month = 'october') AND (dayint >= 23)) OR ((month = 'november') AND (dayint <= 21)) then
+   if ((month = 'october') AND (day >= 23)) OR ((month = 'november') AND (day <= 21)) then
    begin
+        writeln(self.createstr('test'));
         writeln('Scorpio is a water sign that derives its strength from the psychic, emotional realm.');
    end;
 
-   if ((month = 'november') AND (dayint >= 22)) OR ((month = 'december') AND (dayint <= 21)) then
+   if ((month = 'november') AND (day >= 22)) OR ((month = 'december') AND (day <= 21)) then
    begin
+        writeln(self.createstr('test'));
         writeln('sagittarius launches its many pursuits like blazing arrows, chasing after geographical, intellectual, and spiritual adventures.');
    end;
 
-   if ((month = 'december') AND (dayint >= 22)) OR ((month = 'january') AND (dayint <= 19)) then
+   if ((month = 'december') AND (day >= 22)) OR ((month = 'january') AND (day <= 19)) then
    begin
+        writeln(self.createstr('test'));
         writeln('Capricorns are skilled at navigating both the material and emotional realms.');
    end;
 end;
 
 begin
 
-   writeln(Random(11));
    writeln('Please enter you month of birth: ');
    readln(month);
    writeln('Please enter you day of birth: ');
