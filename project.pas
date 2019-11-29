@@ -2,55 +2,57 @@
 {$m+}	       // directive to be used for using constructor
 program Classproject;
 Uses
-   sysutils, classes;
+   sysutils, classes;  //import some classes
 
 type
-   userinput = string;
-   Sign = class
+   userinput = string; //create a type for userinput
+   Sign = class        //create a class holder
 
    private
-     month : string;
-     day : integer;
+     month : string;   //create month string in sign class
+     day : integer;    //create a day integer in sign class
 
    public
-      constructor create(m , d : string);
-      procedure printout;
-      procedure printstr;
-      function createstr(sign : string) : string ;
+      constructor create(m , d : string);  //state that a constructor exists
+      procedure printout;                  //printout procedure exists
+      procedure printstr;                  //printstr procedure exists
+      function createstr(sign:string):string ;   //createstr will output string
 
 end;
 var
-   m1: Sign;
-   month : userinput;
-   day : userinput;
-   list: TStringList;
+   m1: Sign;                               //create a instance of class
+   month : userinput;                      //create a userinput named month
+   day : userinput;                        //create a userinput named day
+   list: TStringList;                      //create a TStringList named list
 
 constructor Sign.create(m, d : string);
+{construct a sign instance}
 begin
-  month := trim(m);
+  month := trim(m); //trim whitespace off month
   Try
-     day := StrToInt(trim(d));
+     day := StrToInt(trim(d));   //try to trim and convert day to int
    except
    On E : EConvertError do
+     {for a non-integer input}
      Writeln('Invalid number encountered');
      end;
 end;
 
 function Sign.createstr(sign : string): string;
 begin
-  list := TStringList.create;
+  list := TStringList.create;           //create empty list
   try
-    list.LoadFromFile(sign +'.txt');
-    Randomize;
-    createstr :=  list[Random(list.Count)];
+    list.LoadFromFile(sign +'.txt');    //load file
+    Randomize;                          //randomize line read
+    createstr :=  list[Random(list.Count)];//return a line
   finally
-    list.Free;
+    list.Free;//destroy the list
   end;
 end;
 
 procedure Sign.printstr;
 begin
-    writeln('Horoscope: ' + self.createstr('Horoscopes'));
+    writeln('Horoscope: ' + self.createstr('Horoscopes')); //print a line from file
 end;
 
 procedure Sign.printout;
@@ -140,18 +142,18 @@ begin
    repeat
         //get birth month
         writeln('Please enter you month of birth: ');
-        readln(month);
+        readln(month);   // read from input
 
         //get day
         writeln('Please enter you day of birth: ');
-        readln(day);
+        readln(day);     // read from input
 
         //create sign instantance and print output
-        m1:= Sign.create(month, day);
-        m1.printout;
-   until (month = 'quit') OR (day = 'quit');
+        m1:= Sign.create(month, day);  // create a sign instance
+        m1.printout;    //print out lines
+   until (month = 'quit') OR (day = 'quit'); //repeat until quit is entered
 
    //end
-   writeln('Please press enter!');
-   readln;
+   writeln('Please press enter!'); // let them see the final output
+   readln;                         // read whatever was entered and end
 end.

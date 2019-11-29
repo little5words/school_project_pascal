@@ -23,3 +23,4 @@ uses directives as settings (like assembly)
 procedures in pascal don't have outputs
 functions do have outputs and have to be part of their declarations
 class methods and have to be initialized and declared separately
+"createstr :=  var" is how to return from createstr
