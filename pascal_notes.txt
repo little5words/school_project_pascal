@@ -20,6 +20,4 @@ end.   == end of program
 must declare variables above call (like both python & java)
 main begin & end block is last
 uses directives as settings (like assembly)
-procedures in pascal don't have outputs
-functions do have outputs and have to be part of their declarations
-class methods and have to be initialized and declared separately
+procedures(methods) in pascal don't have to have () or inputs and just use class or global variables 
