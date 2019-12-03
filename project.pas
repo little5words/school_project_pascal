@@ -1,73 +1,159 @@
 {$mode objfpc} // directive to be used for defining classes
-{$m+}		   // directive to be used for using constructor
+{$m+}	       // directive to be used for using constructor
+program Classproject;
+Uses
+   sysutils, classes;  //import some classes
 
-program exClass;
 type
-   userinput = string;
-   Sign = class
+   userinput = string; //create a type for userinput
+   Sign = class        //create a class holder
 
    private
-      length, width: integer;
+     month : string;   //create month string in sign class
+     day : integer;    //create a day integer in sign class
 
    public
-      constructor create(l, w: integer);
-      procedure setlength(l: integer);
+      constructor create(m , d : string);  //state that a constructor exists
+      procedure printout;                  //printout procedure exists
+      procedure printstr;                  //printstr procedure exists
+      function createstr(sign:string):string ;   //createstr will output string
 
-      function getlength(): integer;
-      procedure setwidth(w: integer);
-
-      function getwidth(): integer;
-      procedure draw;
 end;
 var
-   m1: Sign;
-   month : userinput;
+   m1: Sign;                               //create a instance of class
+   month : userinput;                      //create a userinput named month
+   day : userinput;                        //create a userinput named day
+   list: TStringList;                      //create a TStringList named list
 
-constructor Sign.create(l, w: integer);
+constructor Sign.create(m, d : string);
+{construct a sign instance}
 begin
-   length := l;
-   width := w;
+  month := trim(m); //trim whitespace off month
+  Try
+     day := StrToInt(trim(d));   //try to trim and convert day to int
+   except
+   On E : EConvertError do
+     {for a non-integer input}
+     Writeln('Invalid number encountered');
+     end;
 end;
 
-procedure Sign.setlength(l: integer);
+function Sign.createstr(sign : string): string;
 begin
-   length := l;
+  list := TStringList.create;           //create empty list
+  try
+    list.LoadFromFile(sign +'.txt');    //load file
+    Randomize;                          //randomize line read
+    createstr :=  list[Random(list.Count)];//return a line
+  finally
+    list.Free;//destroy the list
+  end;
 end;
 
-procedure Sign.setwidth(w: integer);
+procedure Sign.printstr;
 begin
-   width :=w;
+    writeln('Horoscope: ' + self.createstr('Horoscopes')); //print a line from file
 end;
 
-function Sign.getlength(): integer;
+procedure Sign.printout;
 begin
-   getlength := length;
-end;
-
-function Sign.getwidth(): integer;
-begin
-   getwidth := width;
-end;
-
-procedure Sign.draw;
-var
-   i, j: integer;
-begin
-   for i:= 1 to length do
+   if ((month = 'january') AND (day >= 20)) OR ((month = 'february') AND (day <= 18)) then
    begin
-      for j:= 1 to width do
-         write(' * ');
-      writeln;
+        self.printstr;
+        writeln('Aquarius is the most humanitarian astrological sign.');
+   end
+
+   else if ((month = 'february') AND (day >= 19)) OR ((month = 'march') AND (day <= 20)) then
+   begin
+        self.printstr;
+        writeln('Pisces has absorbed every lesson - the joys and the pain, the hopes and the fears.');
+   end
+
+   else if ((month = 'march') AND (day >= 21)) OR ((month = 'april') AND (day <= 19)) then
+   begin
+        self.printstr;
+        writeln('Bold and ambitious, Aries dives headfirst into even the most challenging situations.');
+   end
+
+   else if ((month = 'april') AND (day >= 20)) OR ((month = 'may') AND (day <= 20)) then
+   begin
+        self.printstr;
+        writeln('Like their celestial spirit animal, Taureans enjoy relaxing in serene,'+
+        'bucolic environments surrounded by soft sounds, soothing aromas, and succulent flavors.');
+   end
+
+   else if ((month = 'may') AND (day >= 21)) OR ((month = 'june') AND (day <= 20)) then
+   begin
+        self.printstr;
+        writeln('Appropriately symbolized by the celestial twins, Gemini are interested in so many pursuits that it had to double itself.');
+   end
+
+   else if ((month = 'june') AND (day >= 21)) OR ((month = 'july') AND (day <= 22)) then
+   begin
+        self.printstr;
+        writeln('Cancers are highly intuitive and their psychic abilities manifest in tangible spaces');
+   end
+
+   else if ((month = 'july') AND (day >= 23)) OR ((month = 'august') AND (day <= 22)) then
+   begin
+        self.printstr;
+        writeln('Vivacious, theatrical, and passionate, Leos love to bask in the spotlight and celebrate themselves.');
+   end
+
+   else if ((month = 'august') AND (day >= 23)) OR ((month = 'september') AND (day <= 22)) then
+   begin
+        self.printstr;
+        writeln('Virgos are logical, practical, and systematic in their approach to life');
+   end
+
+   else if ((month = 'september') AND (day >= 23)) OR ((month = 'october') AND (day <= 22)) then
+   begin
+        self.printstr;
+        writeln(' Libra is obsessed with symmetry and strives to create equilibrium in all areas of life.');
+   end
+
+   else if ((month = 'october') AND (day >= 23)) OR ((month = 'november') AND (day <= 21)) then
+   begin
+        self.printstr;
+        writeln('Scorpio is a water sign that derives its strength from the psychic, emotional realm.');
+   end
+
+   else if ((month = 'november') AND (day >= 22)) OR ((month = 'december') AND (day <= 21)) then
+   begin
+        self.printstr;
+        writeln('sagittarius launches its many pursuits like blazing arrows, chasing after geographical, intellectual, and spiritual adventures.');
+   end
+
+   else if ((month = 'december') AND (day >= 22)) OR ((month = 'january') AND (day <= 19)) then
+   begin
+        self.printstr;
+        writeln('Capricorns are skilled at navigating both the material and emotional realms.')
+   end
+
+   else
+
+   begin
+        writeln('invalid month');
    end;
+
 end;
 
 begin
-   Randomize; { This way we generate a new sequence every time
-               the program is run}
+   repeat
+        //get birth month
+        writeln('Please enter you month of birth: ');
+        readln(month);   // read from input
 
-   m1:= Sign.create(3,7);
-   writeln(Random(11));
-   writeln('Please enter you month of birth: ');
-   readln(month);
+        //get day
+        writeln('Please enter you day of birth: ');
+        readln(day);     // read from input
 
+        //create sign instantance and print output
+        m1:= Sign.create(month, day);  // create a sign instance
+        m1.printout;    //print out lines
+   until (month = 'quit') OR (day = 'quit'); //repeat until quit is entered
+
+   //end
+   writeln('Please press enter!'); // let them see the final output
+   readln;                         // read whatever was entered and end
 end.
