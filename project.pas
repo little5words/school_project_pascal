@@ -28,7 +28,7 @@ var
 constructor Sign.create(m, d : string);
 {construct a sign instance}
 begin
-  month := trim(m); //trim whitespace off month
+  month := Lowercase(trim(m)); //trim whitespace off month and lowercase
   Try
      day := StrToInt(trim(d));   //try to trim and convert day to int
    except
@@ -57,7 +57,12 @@ end;
 
 procedure Sign.printout;
 begin
-   if ((month = 'january') AND (day >= 20)) OR ((month = 'february') AND (day <= 18)) then
+   if  day = 0 then
+   begin
+        writeln;
+   end
+
+   else if ((month = 'january') AND (day >= 20)) OR ((month = 'february') AND (day <= 18)) then
    begin
         self.printstr;
         writeln('Aquarius is the most humanitarian astrological sign.');
@@ -134,6 +139,7 @@ begin
 
    begin
         writeln('invalid month');
+        writeln;
    end;
 
 end;
