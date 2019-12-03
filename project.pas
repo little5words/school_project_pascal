@@ -57,9 +57,14 @@ end;
 
 procedure Sign.printout;
 begin
-   if  day = 0 then
+   if  (day = 0) then
    begin
         writeln;
+   end
+
+   else if day > 31 then
+   begin
+        writeln('too large of number!');
    end
 
    else if ((month = 'january') AND (day >= 20)) OR ((month = 'february') AND (day <= 18)) then
